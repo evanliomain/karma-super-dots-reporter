@@ -3,10 +3,14 @@
 
 Display a success, failure or ignore icon for each test. It don't display the reason and stack trace of each failure test unlike default dots karma reporter.
 
-To display a nice reason and stack trace of failure test, please consider another plugin in addition of it, like [karma-mocha-reporter](https://github.com/litixsoft/karma-mocha-reporter).
+To display a nice reasons and stack traces of failure tests, please consider another plugin in addition of this one, like [karma-mocha-reporter](https://github.com/litixsoft/karma-mocha-reporter).
 
 ## How does it look like
+If colors karma options is true (true by default);
 ![screenshot](img/default_display.png)
+
+If colors karma options is false:
+![screenshot](img/default_display_no_colors.png)
 
 ## Installation
 The easiest way is to keep `karma-super-dots-reporter` as a devDependency in your `package.json`.
@@ -63,7 +67,7 @@ module.exports = function(config) {
 **Type:** Object
 
 **Default Values:**
-```json
+```javascript
 {
     icon: {
         success : '✔',
@@ -101,7 +105,7 @@ module.exports = function(config) {
 **Type:** Object
 
 **Default Values:**
-```json
+```javascript
 {
     color: {
         success : 'green',
