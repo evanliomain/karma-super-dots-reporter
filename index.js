@@ -1,9 +1,10 @@
 (function() {
   'use strict';
 
+  var chalk      = require('chalk'),
+      logSymbols = require('log-symbols');
+
   var SuperDotsReporter = function(hasColors, options) {
-    var chalk      = require('chalk'),
-        logSymbols = require('log-symbols');
 
     chalk.enabled = hasColors;
 
@@ -21,14 +22,14 @@
 
     if (hasColors) {
       this.USE_COLORS      = true;
-      options.icon.failure = chalk[options.color.failure](options.icon.failure);
-      options.icon.success = chalk[options.color.success](options.icon.success);
-      options.icon.ignore  = chalk[options.color.ignore](options.icon.ignore);
+      options.icon.failure = colorInto(options.color.failure, options.icon.failure);
+      options.icon.success = colorInto(options.color.success, options.icon.success);
+      options.icon.ignore  = colorInto(options.color.ignore,  options.icon.ignore);
     } else {
       this.USE_COLORS      = false;
-      options.icon.failure = chalk.stripColor(options.icon.failure);
-      options.icon.success = chalk.stripColor(options.icon.success);
-      options.icon.ignore  = chalk.stripColor(options.icon.ignore);
+      options.icon.failure = noColor(options.icon.failure);
+      options.icon.success = noColor(options.icon.success);
+      options.icon.ignore  = noColor(options.icon.ignore);
     }
 
     this.onRunStart = function() {
@@ -64,11 +65,19 @@
     }
   };
 
-  function write(string) {
-    process.stdout.write(string);
-  }
-
   SuperDotsReporter.$inject = ['config.colors', 'config.superDotsReporter'];
 
   module.exports = { 'reporter:super-dots': ['type', SuperDotsReporter] };
+
+  function colorInto(color, str) {
+    return chalk[color](chalk.stripColor(str));
+  }
+
+  function noColor(str) {
+    return chalk.stripColor(str);
+  }
+
+  function write(string) {
+    process.stdout.write(string);
+  }
 })();
