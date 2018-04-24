@@ -48,7 +48,6 @@
       this._writeCharacter(options.icon.ignore);
     };
 
-
     this.onSpecComplete = function(browser, result) {
       if (result.skipped) {
         this.specSkipped(browser, result);
@@ -57,6 +56,10 @@
       } else {
         this.specFailure(browser, result);
       }
+    };
+
+    this.onRunComplete = function (browser, result) {
+      write('\n');
     };
 
     this._writeCharacter = function(character) {

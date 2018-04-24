@@ -1,7 +1,7 @@
 {
   "name"        : "karma-super-dots-reporter",
   "description" : "Karma reporter plugin with dots style highly configurable.",
-  "version"     : "0.1.0",
+  "version"     : "0.1.1",
   "homepage"    : "https://github.com/evanliomain/karma-super-dots-reporter",
   "author"      : "Evan Liomain",
   "repository"  : {
