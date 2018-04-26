@@ -58,7 +58,7 @@
       }
     };
 
-    this.onRunComplete = function (browser, result) {
+    this.onRunComplete = function(browser, result) {
       write('\n');
     };
 
